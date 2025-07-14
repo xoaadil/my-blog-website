@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
-let registerUse = async (req, res, next) => {
+let registerUser = async (req, res, next) => {
   console.log("Verifying input detail to register ...");
 
   const schema = z.object({
@@ -37,7 +37,7 @@ let registerUse = async (req, res, next) => {
         });
       } else {
         let role = "user";
-        if (email == "aaadil2004@gmail.com") {
+        if (email == process.env.ADMIN) {
           role = "admin";
         }
         let hashpass = await bcrypt.hash(password, 5);
@@ -152,7 +152,7 @@ console.log("hit the profile")
 };
 
 module.exports = {
-  registerUse,
+  registerUser,
   loginUser,
   profile,
 };

@@ -11,7 +11,6 @@ const userRoutes  = require("./routes/userRoutes")
 const PORT = process.env.PORT || 6000;
 
 
-
 app.get("/", (req, res) => {
     res.send("ye ha root ")
 })
